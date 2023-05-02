@@ -1,23 +1,23 @@
 module.exports = {
 	// You can customize the language here
 	onlyadminbox: {
-		shortDescription: "turn on/off only admin box can use bot",
-		longDescription: "turn on/off only admin box can use bot",
+		shortDescription: "تشغيل / إيقاف تشغيل امكانية استخدام البوت فقط للمسؤولين",
+		longDescription: "تفعيل/إيقاف خاصية السماح بإستخدام البوت للمديرين فقط",
 		guide: "   {pn} [on | off]",
 		text: {
-			turnedOn: "Turned on the mode only admin of group can use bot",
-			turnedOff: "Turned off the mode only admin of group can use bot",
-			syntaxError: "Syntax error, only use {pn} on or {pn} off"
+			turnedOn: "تم تشغيل وضع يمكن لمسؤولي المجموعة فقط استخدام البوت.",
+			turnedOff: "تم إيقاف وضع السماح للمشرفين فقط في المجموعة باستخدام البوت",
+			syntaxError: "هناك خطأ في الصياغة، استخدم فقط {pn} on أو {pn} off."
 		}
 	},
 	adduser: {
-		shortDescription: "Add user to box chat",
-		longDescription: "Add user to box chat of you",
-		guide: "   {pn} [link profile | uid]",
+		shortDescription: "إضافة مستخدم إلى مجموعه.",
+		longDescription: "إضافة مستخدم إلى صندوق الدردشة الخاص بك.",
+		guide: "  {pn} [رابط الملف الشخصي | معرف المستخدم]",
 		text: {
-			alreadyInGroup: "Already in group",
-			successAdd: "- Successfully added %1 members to the group",
-			failedAdd: "- Failed to add %1 members to the group",
+			alreadyInGroup: "موجود بالفعل في المجموعة.",
+			successAdd: "- تمت إضافة %1 أعضاء بنجاح إلى المجموعة.",
+			failedAdd: "- فشل في إضافة %1 أعضاء إلى المجموعة.",
 			approve: "- Added %1 members to the approval list",
 			invalidLink: "Please enter a valid facebook link",
 			cannotGetUid: "Cannot get uid of this user",
@@ -200,23 +200,22 @@ module.exports = {
 		guide: "{pn} load <command file name>\n{pn} loadAll\n{pn} install <url> <command file name>: Download and install a command file from a url, url is the path to the file (raw)",
 		text: {
 			missingFileName: "⚠️ | Please enter the command name you want to reload",
-			loaded: "✅ | Loaded command \"%1\" successfully",
-			loadedError: "❌ | Failed to load command \"%1\" with error\n%2: %3",
-			loadedSuccess: "✅ | Loaded successfully \"%1\" command",
-			loadedFail: "❌ | Failed to load \"%1\" command\n%2",
+			loaded: "✅ | Loaded command %1 successfully",
+			loadedError: "❌ | Failed to load command %1 with error\n%2: %3",
+			loadedSuccess: "✅ | Loaded successfully %1 command",
+			loadedFail: "❌ | Failed to load %1 command\n%2",
 			missingCommandNameUnload: "⚠️ | Please enter the command name you want to unload",
-			unloaded: "✅ | Unloaded command \"%1\" successfully",
-			unloadedError: "❌ | Failed to unload command \"%1\" with error\n%2: %3",
-			missingUrlCodeOrFileName: "⚠️ | Please enter the url or code and command file name you want to install",
-			missingUrlOrCode: "⚠️ | Please enter the url or code of the command file you want to install",
+			unloaded: "✅ | Unloaded command %1 successfully",
+			unloadedError: "❌ | Failed to unload command %1 with error\n%2: %3",
+			missingUrl: "⚠️ | Please enter the url of the command file you want to install",
 			missingFileNameInstall: "⚠️ | Please enter the file name to save the command (with .js extension)",
-			invalidUrlOrCode: "⚠️ | Unable to get command code",
+			invalidUrl: "⚠️ | Unable to get command code",
 			alreadExist: "⚠️ | The command file already exists, are you sure you want to overwrite the old command file?\nReact to this message to continue",
-			installed: "✅ | Installed command \"%1\" successfully, the command file is saved at %2",
-			installedError: "❌ | Failed to install command \"%1\" with error\n%2: %3",
-			missingFile: "⚠️ | Command file \"%1\" not found",
+			installed: "✅ | Installed command %1 successfully, the command file is saved at %2",
+			installedError: "❌ | Failed to install command %1 with error\n%2: %3",
+			missingFile: "⚠️ | Command file %1 not found",
 			invalidFileName: "⚠️ | Invalid command file name",
-			unloadedFile: "✅ | Unloaded command \"%1\""
+			unloadedFile: "✅ | Unloaded command %1"
 		}
 	},
 	count: {
@@ -303,23 +302,22 @@ module.exports = {
 		guide: "{pn} load <command file name>\n{pn} loadAll\n{pn} install <url> <command file name>: Download and load event command, url is the path to the command file (raw)",
 		text: {
 			missingFileName: "⚠️ | Please enter the command name you want to reload",
-			loaded: "✅ | Loaded event command \"%1\" successfully",
-			loadedError: "❌ | Loaded event command \"%1\" failed with error\n%2: %3",
-			loadedSuccess: "✅ | Loaded \"%1\" event command successfully",
-			loadedFail: "❌ | Loaded event command \"%1\" failed\n%2",
+			loaded: "✅ | Loaded event command %1 successfully",
+			loadedError: "❌ | Loaded event command $%1 failed with error\n%2: %3",
+			loadedSuccess: "✅ | Loaded successfully %1 event command",
+			loadedFail: "❌ | Loaded failed %1 event command\n%2",
 			missingCommandNameUnload: "⚠️ | Please enter the command name you want to unload",
-			unloaded: "✅ | Unloaded event command \"%1\" successfully",
-			unloadedError: "❌ | Unloaded event command \"%1\" failed with error\n%2: %3",
-			missingUrlCodeOrFileName: "⚠️ | Please enter the url or code and command file name you want to install",
-			missingUrlOrCode: "⚠️ | Please enter the url or code of the command file you want to install",
+			unloaded: "✅ | Unloaded event command %1 successfully",
+			unloadedError: "❌ | Unloaded event command $%1 failed with error\n%2: %3",
+			missingUrl: "⚠️ | Please enter the url of the command file you want to install",
 			missingFileNameInstall: "⚠️ | Please enter the file name to save the command (with .js extension)",
-			invalidUrlOrCode: "⚠️ | Unable to get command code",
+			invalidUrl: "⚠️ | Unable to get command code",
 			alreadExist: "⚠️ | The command file already exists, are you sure you want to overwrite the old command file?\nReact to this message to continue",
-			installed: "✅ | Installed event command \"%1\" successfully, the command file is saved at %2",
-			installedError: "❌ | Installed event command \"%1\" failed with error\n%2: %3",
-			missingFile: "⚠️ | File \"%1\" not found",
+			installed: "✅ | Installed event command %1 successfully, the command file is saved at %2",
+			installedError: "❌ | Installed event command $%1 failed with error\n%2: %3",
+			missingFile: "⚠️ | File %1 not found",
 			invalidFileName: "⚠️ | Invalid file name",
-			unloadedFile: "✅ | Unloaded command \"%1\""
+			unloadedFile: "✅ | Unloaded command %1"
 		}
 	},
 	filteruser: {

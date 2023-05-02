@@ -1,31 +1,49 @@
 {
-	"commandBanned": {},
-	"envGlobal": {
-		"weatherApiKey": "d7e795ae6a0d44aaa8abb1a0a7ac19e4"
-	},
-	"envCommands": {
-		"daily": {
-			"rewardDay1": {
-				"coin": 100,
-				"exp": 10
-			}
-		},
-		"notification": {
-			"delayPerGroup": 250
-		},
-		"rank": {
-			"deltaNext": 5
-		},
-		"rankup": {
-			"deltaNext": 5
-		},
-		"appstore": {
-			"limitResult": 3
-		}
-	},
-	"envEvents": {
-		"logsbot": {
-			"allow": true
-		}
-	}
+  "commandBanned": {},
+  "envGlobal": {
+    "weatherApiKey": "d7e795ae6a0d44aaa8abb1a0a7ac19e4"
+  },
+  "envCommands": {
+    "daily": {
+      "rewardDay1": {
+        "coin": 100,
+        "exp": 10
+      }
+    },
+    "notification": {
+      "delayPerGroup": 250
+    },
+    "rank": {
+      "deltaNext": 5
+    },
+    "rankup": {
+      "deltaNext": 5
+    },
+    "appstore": {
+      "limitResult": 3
+    },
+    "ارسل": {
+      "delayPerGroup": 250
+    },
+    "ابل": {
+      "limitResult": 3
+    },
+    "راتب": {
+      "rewardFirstDay": {
+        "coin": 300,
+        "exp": 20
+      }
+    },
+    "لعب1": {
+      "reward": 1000
+    },
+    "مستوى": {
+      "deltaNext": 5
+    }
+  },
+  "envEvents": {
+    "logsbot": {
+      "allow": true
+    }
+  }
 }

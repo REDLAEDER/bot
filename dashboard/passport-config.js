@@ -8,7 +8,7 @@ module.exports = function (Passport, db, bcrypt) {
 	Passport.deserializeUser(async (email, done) => {
 		const user = await db.get(email);
 		done(null, user);
-	});
+	})
 
 	Passport.use(new localStrategy(
 		async function (email, password, done) {
