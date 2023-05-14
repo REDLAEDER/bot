@@ -94,7 +94,7 @@ module.exports = {
 			let msg = "";
 			if (sortHelp == "name") {
 				const page = parseInt(args[0]) || 1;
-				const numberOfOnePage = 30;
+				const numberOfOnePage = 100;
 				for (const [name, value] of commands) {
 					if (value.config.role > 1 && role < value.config.role)
 						continue;
