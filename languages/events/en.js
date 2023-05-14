@@ -3,8 +3,8 @@ module.exports = {
 	autoUpdateThreadInfo: {},
 	checkwarn: {
 		text: {
-			warn: "Member %1 has been warned 3 times before and has been banned from the chat box\n- Name: %1\n- Uid: %2\n- To unban, please use the \"%3warn unban <uid>\" command (with uid is the uid of the person you want to unban)",
-			needPermission: "Bot needs administrator permission to kick banned members"
+			warn: "لقد تم تحذير العضو %1 ثلاث مرات من قبل و تم حظره من صندوق الدردشة\n- الاسم: %1\n- رقم المعرف: %2\n- لإلغاء الحظر، يرجى استخدام أمر \"%3warn unban <uid>\" (حيث يجب تعويض <uid> برقم معرف الشخص الذي ترغب في إلغاء حظره)",
+			needPermission: "يحتاج البوت إلى صلاحية المسؤول لطرد الأعضاء المحظورين."
 		}
 	},
 	leave: {
@@ -19,22 +19,22 @@ module.exports = {
 	},
 	logsbot: {
 		text: {
-			title: "====== Bot logs ======",
-			added: "\n✅\nEvent: bot has been added to a new group\n- Added by: %1",
-			kicked: "\n❌\nEvent: bot has been kicked\n- Kicked by: %1",
-			footer: "\n- User ID: %1\n- Group: %2\n- Group ID: %3\n- Time: %4"
+			title: "====== سجلات البوت ======",
+			added: "\n✅\nحدث: تمت إضافة البوت إلى مجموعة جديدة\n- تمت الإضافة بواسطة: %1",
+			kicked: "\n❌\nالحدث: تم طرد البوت\n- تم الطرد بواسطة: %1",
+			footer: "\n- معرف المستخدم: %1\n- المجموعة: %2\n- معرف المجموعة: %3\n- الوقت: %4"
 		}
 	},
 	onEvent: {},
 	welcome: {
 		text: {
-			session1: "morning",
-			session2: "noon",
-			session3: "afternoon",
-			session4: "evening",
-			welcomeMessage: "Thank you for inviting me to the group!\nBot prefix: %1\nTo view the list of commands, please enter: %1help",
-			multiple1: "you",
-			multiple2: "you guys"
+			session1: "صباحًا",
+			session2: "ظهرًا",
+			session3: "العصر",
+			session4: "مساء",
+			welcomeMessage: `تم اتصال!`,
+			multiple1: "انت",
+			multiple2: "انتم"
 		}
 	}
 };
