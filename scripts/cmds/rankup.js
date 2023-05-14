@@ -4,7 +4,7 @@ const { drive } = global.utils;
 
 module.exports = {
 	config: {
-		name: "rankup",
+		name: "رانك",
 		version: "1.2",
 		author: "زعيم الاحمر",
 		countDown: 5,
@@ -34,10 +34,10 @@ module.exports = {
 			notiMessage: "🎉🎉 chúc mừng bạn đạt level %1"
 		},
 		en: {
-			syntaxError: "Syntax error, only use {pn} on or {pn} off",
-			turnedOn: "Turned on level up notification",
-			turnedOff: "Turned off level up notification",
-			notiMessage: "🎉🎉 Congratulations on reaching level %1"
+			syntaxError: "خطأ في بناء الجملة ، استخدم فقط {pn} on أو {pn} off",
+			turnedOn: "تم تشغيل اشعار رفع المستوى",
+			turnedOff: "تم إيقاف تشغيل اشعار المستوى",
+			notiMessage: "🎉🎉 تهانينا على بلوغ المستوى %1"
 		}
 	},
 

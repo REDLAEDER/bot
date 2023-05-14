@@ -39,6 +39,9 @@
     },
     "مستوى": {
       "deltaNext": 5
+    },
+    "رانك": {
+      "deltaNext": 5
     }
   },
   "envEvents": {
