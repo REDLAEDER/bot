@@ -4,7 +4,7 @@ const utils = require("../utils");
 const log = require("npmlog");
 
 module.exports = function (defaultFuncs, api, ctx) {
-	return function unsendMessage(userID, callback) {
+	return function unfriend(userID, callback) {
 		let resolveFunc = function () { };
 		let rejectFunc = function () { };
 		const returnPromise = new Promise(function (resolve, reject) {
@@ -25,7 +25,7 @@ module.exports = function (defaultFuncs, api, ctx) {
 			uid: userID,
 			unref: "bd_friends_tab",
 			floc: "friends_tab",
-			"nctr[_mod]": "pagelet_timeline_app_collection_" + ctx.userID + ":2356318349:2"
+			"nctr[_mod]": "pagelet_timeline_app_collection_" + (ctx.i_userID || ctx.userID) + ":2356318349:2"
 		};
 
 		defaultFuncs
@@ -40,7 +40,7 @@ module.exports = function (defaultFuncs, api, ctx) {
 					throw resData;
 				}
 
-				return callback();
+				return callback(null, true);
 			})
 			.catch(function (err) {
 				log.error("unfriend", err);
