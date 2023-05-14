@@ -3,9 +3,9 @@ const { utils } = global;
 
 module.exports = {
 	config: {
-		name: "prefix",
+		name: "بدايه",
 		version: "1.2",
-		author: "NTKhang",
+		author: "زعيم الاحمر",
 		countDown: 5,
 		role: 0,
 		shortDescription: "Thay đổi prefix của bot",
@@ -40,13 +40,13 @@ module.exports = {
 			myPrefix: "🌐 Prefix của hệ thống: %1\n🛸 Prefix của nhóm bạn: %2"
 		},
 		en: {
-			reset: "Your prefix has been reset to default: %1",
-			onlyAdmin: "Only admin can change prefix of system bot",
-			confirmGlobal: "Please react to this message to confirm change prefix of system bot",
-			confirmThisThread: "Please react to this message to confirm change prefix in your box chat",
-			successGlobal: "Changed prefix of system bot to: %1",
-			successThisThread: "Changed prefix in your box chat to: %1",
-			myPrefix: "🌐 System prefix: %1\n🛸 Your box chat prefix: %2"
+			reset: "تم استرجاع البادئه الى : %1",
+			onlyAdmin: "فقط اردمن يستطيع تغير البادئه",
+			confirmGlobal: "يرجى وضع رياكشن على هذه الرسالة لتأكيد تغيير بادئة ",
+			confirmThisThread: "الرجاء وضع رياكشن على هذه الرسالة لتأكيد تغيير البادئة في مجموعه الدردشة الخاصة بك",
+			successGlobal: "تم تغيرالبادئه الى : %1",
+			successThisThread: "تم تغير البادئة في مجموعه الى: %1",
+			myPrefix: "🌐 بادئةالنظام: %1\n🛸 بادئه في مجموعه: %2"
 		}
 	},
 
