@@ -4,7 +4,7 @@ module.exports = {
 		version: "1.6",
 		author: "زعيم الاحمر",
 		countDown: 5,
-		role: 0,
+		role: 1,
 		shortDescription: {
 			vi: "Thêm tên gọi khác cho lệnh",
 			en: "Add an alias for the command"
