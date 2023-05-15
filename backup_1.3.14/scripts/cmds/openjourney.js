@@ -3,37 +3,37 @@ const { getStreamFromURL } = global.utils;
 
 module.exports = {
 	config: {
-		name: "openjourney",
+		name: "ai",
 		aliases: ["midjourney"],
-		version: "1.3",
-		author: "NTKhang",
+		version: "1.2",
+		author: "زعيم الاحمر",
 		countDown: 5,
 		role: 0,
 		shortDescription: {
 			vi: "Tạo ảnh từ văn bản của bạn",
-			en: "Create image from your text"
+			en: "إنشاء صورة من النص الذي تريده."
 		},
 		longDescription: {
 			uid: "Tạo ảnh từ văn bản của bạn",
-			en: "Create image from your text"
+			en: "إنشاء صورة من النص الذي تريده."
 		},
 		category: "info",
 		guide: {
 			vi: "   {pn} <prompt>: tạo ảnh từ văn bản của bạn",
-			en: "   {pn} <prompt>: create image from your text"
+			en:"   {pn} <prompt>: صنع صورة من نصك"
 		}
 	},
 
 	langs: {
 		vi: {
 			syntaxError: "⚠️ Vui lòng nhập prompt",
-			error: "❗ Đã có lỗi xảy ra, vui lòng thử lại sau:\n%1",
+			error: "❗ Đã có lỗi xảy ra, vui lòng thử lại sau",
 			serverError: "❗ Server đang quá tải, vui lòng thử lại sau"
 		},
 		en: {
-			syntaxError: "⚠️ Please enter prompt",
-			error: "❗ An error has occurred, please try again later:\n%1",
-			serverError: "❗ Server is overloaded, please try again later"
+			syntaxError: "⚠️ يرجى إدخال النص المطلوب",
+			error: "❗ حدث خطأ، يرجى المحاولة مرة أخرى في وقت لاحق",
+			serverError: "❗ الخادم مشغول، يرجى المحاولة مرة أخرى في وقت لاحق"
 		}
 	},
 
@@ -53,8 +53,6 @@ module.exports = {
 		catch (err) {
 			if (err.detail == "Request was throttled. Expected available in 1 second.")
 				return message.reply(getLang("serverError"));
-			else
-				return message.reply(getLang("error", JSON.stringify(err, null, 2)));
 		}
 	}
 };

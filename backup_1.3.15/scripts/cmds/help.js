@@ -3,7 +3,7 @@ const axios = require("axios");
 const path = require("path");
 const { getPrefix } = global.utils;
 const { commands, aliases } = global.GoatBot;
-const doNotDelete = "[ 🐐 | Goat Bot V2 ]";
+const doNotDelete = "[ 🐐 | زعيم الاحمر ]";
 /** 
 * @author NTKhang
 * @author: do not delete it
@@ -12,14 +12,14 @@ const doNotDelete = "[ 🐐 | Goat Bot V2 ]";
 
 module.exports = {
 	config: {
-		name: "help",
-		version: "1.15",
-		author: "NTKhang",
+		name: "اوامر",
+		version: "1.14",
+		author: "زعيم الاحمر",
 		countDown: 5,
 		role: 0,
 		shortDescription: {
 			vi: "Xem cách dùng lệnh",
-			en: "View command usage"
+			en: "عرض استخدام الأمر"
 		},
 		longDescription: {
 			vi: "Xem cách sử dụng của các lệnh",
@@ -32,11 +32,11 @@ module.exports = {
 				+ "\n   {pn} <command name> [-i | info]: chỉ hiển thị phần thông tin về lệnh"
 				+ "\n   {pn} <command name> [-r | role]: chỉ hiển thị phần quyền hạn của lệnh"
 				+ "\n   {pn} <command name> [-a | alias]: chỉ hiển thị phần tên viết tắt của lệnh",
-			en: "{pn} [empty | <page number> | <command name>]"
-				+ "\n   {pn} <command name> [-u | usage | -g | guide]: only show command usage"
-				+ "\n   {pn} <command name> [-i | info]: only show command info"
-				+ "\n   {pn} <command name> [-r | role]: only show command role"
-				+ "\n   {pn} <command name> [-a | alias]: only show command alias"
+			en: "{pn} [فارغ | رقم الصفحة | اسم الأمر]"
+				+ "\n   {pn} <اسم الأمر> [-u | الاستخدام | -g | الدليل]: عرض استخدام الأمر فقط"
+				+ "\n   {pn} <اسم الأمر> [-i | المعلومات]: عرض معلومات الأمر فقط"
+				+ "\n   {pn} <اسم الأمر> [-r | الدور]: عرض دور الأمر فقط"
+				+ "\n   {pn} <اسم الأمر> [-a | الاسم المستعار]: عرض الاسم المستعار للأمر فقط"
 		},
 		priority: 1
 	},
@@ -60,21 +60,17 @@ module.exports = {
 			pageNotFound: "Trang %1 không tồn tại"
 		},
 		en: {
-			help: "╭─────────────⭓\n%1\n├─────⭔\n│ Page [ %2/%3 ]\n│ Currently, the bot has %4 commands that can be used\n│ » Type %5help <page> to view the command list\n│ » Type %5help to view the details of how to use that command\n├────────⭔\n│ %6\n╰─────────────⭓",
-			help2: "%1├───────⭔\n│ » Currently, the bot has %2 commands that can be used\n│ » Type %3help <command name> to view the details of how to use that command\n│ %4\n╰─────────────⭓",
-			commandNotFound: "Command \"%1\" does not exist",
-			getInfoCommand: "╭── NAME ────⭓\n│ %1\n├── INFO\n│ Description: %2\n│ Other names: %3\n│ Other names in your group: %4\n│ Version: %5\n│ Role: %6\n│ Time per command: %7s\n│ Author: %8\n├── Usage\n%9\n├── Notes\n│ The content inside <XXXXX> can be changed\n│ The content inside [a|b|c] is a or b or c\n╰──────⭔",
-			onlyInfo: "╭── INFO ────⭓\n│ Command name: %1\n│ Description: %2\n│ Other names: %3\n│ Other names in your group: %4\n│ Version: %5\n│ Role: %6\n│ Time per command: %7s\n│ Author: %8\n╰─────────────⭓",
-			onlyUsage: "╭── USAGE ────⭓\n│%1\n╰─────────────⭓",
-			onlyAlias: "╭── ALIAS ────⭓\n│ Other names: %1\n│ Other names in your group: %2\n╰─────────────⭓",
-			onlyRole: "╭── ROLE ────⭓\n│%1\n╰─────────────⭓",
-			doNotHave: "Do not have",
-			roleText0: "0 (All users)",
-			roleText1: "1 (Group administrators)",
-			roleText2: "2 (Admin bot)",
-			roleText0setRole: "0 (set role, all users)",
-			roleText1setRole: "1 (set role, group administrators)",
-			pageNotFound: "Page %1 does not exist"
+			help: "───────────☛\n%1\n⬛─────☛\n│ صفحة [ %2/%3 ]\n│ حاليا البوت فيه %4 أمر يمكن إستعماله\n│ » أكتب %5أوامر <الصفحة> لرؤية القوائم ✅\n│ » أكتب %5أوامر مع إسم الأمر لرؤية كيف تستعمله\n⬛────────☛\n│ %6\n───────────☛",
+			help2: "%1⬛───────☛\n│ » حاليا البوت فيه %2 أمر يمكن إستعماله\n│ » أكتب %3أوامر <إسم الأمر> كي تعرف كيف تستعمله\n│ %4\n───────────☛",
+			commandNotFound: "الأمر \"%1\" غير موجود",
+			getInfoCommand: "── الإسم ────☛\n│ %1\n⬛── معلومات\n│ الوصف: %2\n│ أسماء أخرى: %3\n│ أسماء في مجموعتك: %4\n│ الإصدار: %5\n│ رتبة: %6\n│ الإنتضار: %7ثانية\n│ المبرمج: زعيم الاحمر\n⬛── يُستعمل\n%9\n⬛── ملاحظة\n│ ما داخل «.......» يمكن تغييره\n│ ما داخل [a|b|c] هو a أو b أو c\n✅──────☛",
+			doNotHave: "لم تضف",
+			roleText0: "0 (الكل)",
+			roleText1: "1 (أدمن المجموعة)",
+			roleText2: "2 (زعيم الاحمر)",
+			roleText0setRole: "0 (كل المستخدمين ✅)",
+			roleText1setRole: "1 (رتبة أدمن المجموعة )",
+			pageNotFound: "الصفحة %1 غير متاحة"
 		}
 	},
 
@@ -98,7 +94,7 @@ module.exports = {
 			let msg = "";
 			if (sortHelp == "name") {
 				const page = parseInt(args[0]) || 1;
-				const numberOfOnePage = 30;
+				const numberOfOnePage = 100;
 				for (const [name, value] of commands) {
 					if (value.config.role > 1 && role < value.config.role)
 						continue;
@@ -129,11 +125,11 @@ module.exports = {
 			else if (sortHelp == "category") {
 				for (const [, value] of commands) {
 					if (value.config.role > 1 && role < value.config.role)
-						continue; // if role of command > role of user => skip
-					const indexCategory = arrayInfo.findIndex(item => (item.category || "NO CATEGORY") == (value.config.category?.toLowerCase() || "NO CATEGORY"));
-
-					if (indexCategory != -1)
-						arrayInfo[indexCategory].names.push(value.config.name);
+						continue;
+					if (arrayInfo.some(item => item.category == value.config.category.toLowerCase())) {
+						const index = arrayInfo.findIndex(item => item.category == value.config.category.toLowerCase());
+						arrayInfo[index].names.push(value.config.name);
+					}
 					else
 						arrayInfo.push({
 							category: value.config.category.toLowerCase(),

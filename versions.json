@@ -1560,5 +1560,39 @@
       "fb-chat-api/src/unfriend.js": "add function `unfriend` for fca",
       "updater.js": "Update updater.js"
     }
+  },
+  {
+    "version": "1.3.15",
+    "files": {
+      "bot/handler/handlerEvents.js": "fix mqtt bug",
+      "bot/login/login.js": "fix mqtt bug",
+      "config.json": {
+        "hideNotiMessage": {
+          "wrongCommand": false,
+          "adminOnly": false,
+          "threadBanned": false,
+          "userBanned": false
+        }
+      },
+      "fb-chat-api/src/getMessage.js": "update new thread colors",
+      "fb-chat-api/src/listenMqtt.js": "Update listenMqtt.js",
+      "fb-chat-api/src/threadColors.js": "update new thread colors",
+      "languages/en.lang": "language update",
+      "languages/vi.lang": "language update",
+      "scripts/cmds/adboxonly.js": "add new subcommand: `noti` (on/off the notification when user is not admin of group use bot)",
+      "scripts/cmds/openjourney.js": "language update $ handle error",
+      "updater.js": "Update updater.js"
+    }
+  },
+  {
+    "version": "1.3.16",
+    "files": {
+      "database/controller/dashBoardData.js": "add message queue for save data",
+      "database/controller/globalData.js": "add message queue for save data",
+      "database/controller/threadsData.js": "add message queue for save data",
+      "database/controller/usersData.js": "add message queue for save data",
+      "scripts/cmds/help.js": "fix bug & language update"
+    },
+    "reinstallDependencies": true
   }
 ]

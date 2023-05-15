@@ -1,24 +1,12 @@
 const { existsSync, writeJsonSync, readJSONSync } = require("fs-extra");
 const moment = require("moment-timezone");
 const path = require("path");
-const async = require("async");
-const _ = require("lodash");
 
+const _ = require("lodash");
 const optionsWriteJSON = {
 	spaces: 2,
 	EOL: "\n"
 };
-
-const messageQueue = async.queue(async function (task, callback) {
-	try {
-		await task();
-		callback();
-	}
-	catch (err) {
-		callback(err);
-	}
-}, 1);
-
 const { creatingGlobalData } = global.client.database;
 
 module.exports = async function (databaseType, globalModel, fakeGraphql) {
@@ -42,97 +30,95 @@ module.exports = async function (databaseType, globalModel, fakeGraphql) {
 	global.db.allGlobalData = GlobalData;
 
 	async function save(key, data, mode, path) {
-		messageQueue.push(async function () {
-			const index = _.findIndex(global.db.allGlobalData, { key });
-			if (index === -1 && mode === "update") {
-				const err = new Error(`Can't find data with key: "${key}" in database`);
-				err.name = "KEY_NOT_FOUND";
-				throw err;
-			}
+		const index = _.findIndex(global.db.allGlobalData, { key });
+		if (index === -1 && mode === "update") {
+			const err = new Error(`Can't find data with key: "${key}" in database`);
+			err.name = "KEY_NOT_FOUND";
+			throw err;
+		}
 
-			switch (mode) {
-				case "create": {
-					switch (databaseType) {
-						case "mongodb":
-						case "sqlite": {
-							let dataCreated = await globalModel.create(data);
-							dataCreated = databaseType == "mongodb" ?
-								_.omit(dataCreated._doc, ["_id", "__v"]) :
-								dataCreated.get({ plain: true });
-							global.db.allGlobalData.push(dataCreated);
-							return dataCreated;
-						}
-						case "json": {
-							const timeCreate = moment.tz().format();
-							data.createdAt = timeCreate;
-							data.updatedAt = timeCreate;
-							global.db.allGlobalData.push(data);
-							writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
-							return data;
-						}
+		switch (mode) {
+			case "create": {
+				switch (databaseType) {
+					case "mongodb":
+					case "sqlite": {
+						let dataCreated = await globalModel.create(data);
+						dataCreated = databaseType == "mongodb" ?
+							_.omit(dataCreated._doc, ["_id", "__v"]) :
+							dataCreated.get({ plain: true });
+						global.db.allGlobalData.push(dataCreated);
+						return dataCreated;
 					}
-					break;
+					case "json": {
+						const timeCreate = moment.tz().format();
+						data.createdAt = timeCreate;
+						data.updatedAt = timeCreate;
+						global.db.allGlobalData.push(data);
+						writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
+						return data;
+					}
 				}
-				case "update": {
-					const oldGlobalData = global.db.allGlobalData[index];
-					const dataWillChange = {};
+				break;
+			}
+			case "update": {
+				const oldGlobalData = global.db.allGlobalData[index];
+				const dataWillChange = {};
 
-					if (Array.isArray(path) && Array.isArray(data)) {
-						path.forEach((p, index) => {
-							const _key = p.split(".")[0];
-							dataWillChange[_key] = oldGlobalData[_key];
-							_.set(oldGlobalData, p, data[index]);
-						});
+				if (Array.isArray(path) && Array.isArray(data)) {
+					path.forEach((p, index) => {
+						const _key = p.split(".")[0];
+						dataWillChange[_key] = oldGlobalData[_key];
+						_.set(oldGlobalData, p, data[index]);
+					});
+				}
+				else
+					if (path && typeof path === "string" || Array.isArray(path)) {
+						const _key = Array.isArray(path) ? path[0] : path.split(".")[0];
+						dataWillChange[_key] = oldGlobalData[_key];
+						_.set(dataWillChange, path, data);
 					}
 					else
-						if (path && typeof path === "string" || Array.isArray(path)) {
-							const _key = Array.isArray(path) ? path[0] : path.split(".")[0];
-							dataWillChange[_key] = oldGlobalData[_key];
-							_.set(dataWillChange, path, data);
-						}
-						else
-							for (const key in data)
-								dataWillChange[key] = data[key];
+						for (const key in data)
+							dataWillChange[key] = data[key];
 
-					switch (databaseType) {
-						case "mongodb": {
-							let dataUpdated = await globalModel.findOneAndUpdate({ key }, dataWillChange, { returnDocument: 'after' });
-							dataUpdated = _.omit(dataUpdated._doc, ["_id", "__v"]);
-							global.db.allGlobalData[index] = dataUpdated;
-							return dataUpdated;
-						}
-						case "sqlite": {
-							const getData = await globalModel.findOne({ where: { key } });
-							const dataUpdated = (await getData.update(dataWillChange)).get({ plain: true });
-							global.db.allGlobalData[index] = dataUpdated;
-							return dataUpdated;
-						}
-						case "json": {
-							dataWillChange.updatedAt = moment.tz().format();
-							global.db.allGlobalData[index] = {
-								...oldGlobalData,
-								...dataWillChange
-							};
-							writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
-							return global.db.allGlobalData[index];
-						}
+				switch (databaseType) {
+					case "mongodb": {
+						let dataUpdated = await globalModel.findOneAndUpdate({ key }, dataWillChange, { returnDocument: 'after' });
+						dataUpdated = _.omit(dataUpdated._doc, ["_id", "__v"]);
+						global.db.allGlobalData[index] = dataUpdated;
+						return dataUpdated;
 					}
-					break;
-				}
-				case "remove": {
-					if (index != -1) {
-						global.db.allGlobalData.splice(index, 1);
-						if (databaseType == "mongodb")
-							await globalModel.deleteOne({ key });
-						else if (databaseType == "sqlite")
-							await globalModel.destroy({ where: { key } });
-						else
-							writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
+					case "sqlite": {
+						const getData = await globalModel.findOne({ where: { key } });
+						const dataUpdated = (await getData.update(dataWillChange)).get({ plain: true });
+						global.db.allGlobalData[index] = dataUpdated;
+						return dataUpdated;
 					}
-					break;
+					case "json": {
+						dataWillChange.updatedAt = moment.tz().format();
+						global.db.allGlobalData[index] = {
+							...oldGlobalData,
+							...dataWillChange
+						};
+						writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
+						return global.db.allGlobalData[index];
+					}
 				}
+				break;
 			}
-		});
+			case "remove": {
+				if (index != -1) {
+					global.db.allGlobalData.splice(index, 1);
+					if (databaseType == "mongodb")
+						await globalModel.deleteOne({ key });
+					else if (databaseType == "sqlite")
+						await globalModel.destroy({ where: { key } });
+					else
+						writeJsonSync(pathGlobalData, global.db.allGlobalData, optionsWriteJSON);
+				}
+				break;
+			}
+		}
 	}
 
 
